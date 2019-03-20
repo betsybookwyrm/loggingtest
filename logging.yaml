@@ -1,0 +1,29 @@
+# This is the same as the dictionary in loggingtest/__init__.py
+# with the exception of the format string, which is pasted from logging.BASIC_FORMAT
+# rather than referencing it
+
+version: 1
+disable_existing_loggers: False
+
+formatters:
+    basic:
+        format: "%(levelname)s:%(name)s:%(message)s"
+
+handlers:
+    stream:
+        class: logging.StreamHandler
+        level: DEBUG
+        formatter: basic
+
+loggers:
+    loggingtest:
+        level: DEBUG
+        propagate: True
+
+    external:
+        level: WARNING
+        propagate: True
+
+root:
+    level: INFO
+    handlers: [stream]
